@@ -113,7 +113,7 @@ Los resultados fueron importados a R utilizando el script: load_data_inR_Eq3.R
 Posteriormente se generó la metadata necesaria para el análisis diferencial posterior.
 
 8️⃣ Análisis de Expresión Diferencial (DEG)
-Se utilizó el script: DEG_analysis_Eq3.R
+Se utilizó el script: scripts_R/DEG_Analysis_Eq3.R
 Este script realiza lo siguiente:
 - Se carga raw_counts.csv y metadata.csv
 - Creación del objeto dds con DESeq2
