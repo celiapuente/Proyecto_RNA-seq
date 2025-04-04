@@ -126,6 +126,7 @@ Posteriormente se generó la metadata necesaria para el análisis diferencial po
 ### 8️⃣ Análisis de Expresión Diferencial (DEG)
 
 Se utilizó el script: [DEG_Analysis_Eq3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/DEG_Analysis_Eq3.R)
+
 Este script realiza lo siguiente:
 - Se carga [raw_counts.csv](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/raw_counts/raw_counts.csv) y [metadata.csv](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/metadata.csv)
 - Creación del objeto dds con DESeq2
@@ -137,6 +138,7 @@ Este script realiza lo siguiente:
 ### 9️⃣ Visualización de los resultados
 
 Se utilizaron los siguientes scripts: [Visualizacion1.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion1.R), [Visualizacion2.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion2.R), [Visualizacion3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion3.R) y [Visualizacion4.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion4.R)
+
 Donde estos scripts incluyen:
 Gráficas: PCA, heatmaps, volcano plots
 
