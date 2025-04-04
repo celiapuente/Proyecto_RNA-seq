@@ -153,3 +153,11 @@ Para analizar distintos contrastes, simplemente se modifica la línea del archiv
 files <- "DE_LamCiR_vs_attp2_1wk.csv"
 ```
 De esta manera, el mismo script puede reutilizarse para todos los contrastes, cambiando únicamente el archivo .csv correspondiente a cada comparación.
+
+## 📎 Referencias:
+
+- Kirkland, N. J., Skalak, S. H., Whitehead, A. J., Hocker, J. D., Beri, P., Vogler, G., Hum, B., Wang, M., Lakatta, E. G., Ren, B., Bodmer, R., & Engler, A. J. (2022). Age-dependent Lamin changes induce cardiac dysfunction via dysregulation of cardiac transcriptional programs. Nature Aging, 3, 17–33. https://doi.org/10.1038/s43587-022-00323-8
+- Nelson, R. E., Fessler, L. I., Takagi, Y., Blumberg, B., Keene, D. R., Olson, P. F., Parker, C. G., & Fessler, J. H. (1994). Peroxidasin: A novel enzyme–matrix protein of Drosophila development. The EMBO Journal, 13(15), 3438–3447.
+- Swift, J., Ivanovska, I. L., Buxboim, A., Harada, T., Dingal, P. C. D. P., Pinter, J., Pajerowski, J. D., Spinler, K. R., Shin, J.-W., Tewari, M., Rehfeldt, F., Speicher, D. W., & Discher, D. E. (2013). Nuclear lamin-A scales with tissue stiffness and enhances matrix-directed differentiation. Science, 341(6149), 1240104. https://doi.org/10.1126/science.1240104
+
+
