@@ -15,7 +15,7 @@
 
 Este análisis evalúa los efectos del envejecimiento sobre la expresión génica en cardiomiocitos de *Drosophila melanogaster* con énfasis en el papel de LamC. Se compararon muestras de RNA-seq de moscas jóvenes (1 semana) y envejecidas (5 semanas) en dos condiciones de control (w1118 y attp2), así como en una línea con knockdown específico de LamC mediante RNAi (LamCiR). Los datos fueron generados con la plataforma Illumina NovaSeq 6000 (paired-end, \~34 millones de lecturas por muestra).
 
-Se utilizaron herramientas bioinformáticas en R incluyendo DESeq2 para la detección de genes diferencialmente expresados (DEGs), gprofiler2 para el análisis de enriquecimiento funcional (términos GO y rutas KEGG), y ggplot2 para la visualización de resultados. Los criterios de selección de DEGs incluyeron un adjusted p-value \< 0.05 y log2 fold change significativo.
+Se utilizaron herramientas bioinformáticas en R incluyendo DESeq2 para la detección de genes diferencialmente expresados (DEGs), gprofiler2 para el análisis de enriquecimiento funcional (términos GO), y ggplot2 para la visualización de resultados. Los criterios de selección de DEGs incluyeron un adjusted p-value \< 0.05 y log2 fold change significativo.
 
 Los resultados revelan una disminución progresiva de LamC con la edad, acompañada por una desregulación de factores de transcripción cardiacos clave (como Hand, tin y H15) y genes del citoesqueleto. Estos cambios se asocian con pérdida de accesibilidad cromatínica y disfunción cardíaca, sugiriendo que la remodelación nuclear inducida por la edad desempeña un rol central en la resistencia cardíaca y otros perfiles de envejecimiento.
 
