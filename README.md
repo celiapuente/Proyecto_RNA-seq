@@ -113,7 +113,7 @@ Los resultados fueron importados a R utilizando el script: load_data_inR_Eq3.R
 Posteriormente se generó la metadata necesaria para el análisis diferencial posterior.
 
 8️⃣ Análisis de Expresión Diferencial (DEG)
-Se utilizó el script: [DEG_Analysis_Eq3.R](https://github.com/celiapuente/Proyecto_RNA-seq/scripts_R/DEG_Analysis_Eq3.R)
+Se utilizó el script: [DEG_Analysis_Eq3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/DEG_Analysis_Eq3.R)
 Este script realiza lo siguiente:
 - Se carga raw_counts.csv y metadata.csv
 - Creación del objeto dds con DESeq2
