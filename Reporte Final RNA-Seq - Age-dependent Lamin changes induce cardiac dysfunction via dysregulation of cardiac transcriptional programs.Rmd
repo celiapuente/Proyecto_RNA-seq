@@ -1,0 +1,418 @@
+---
+title: "Reporte Final RNA-Seq: Age-dependent Lamin changes induce cardiac dysfunction
+  via dysregulation of cardiac transcriptional programs"
+output:
+  html_document:
+    df_print: paged
+---
+
+## **Descripción del equipo**
+
+-   **Equipo:** 3
+
+-   **Miembras:**
+
+    -   Miriam Alejandra Jiménez Marmolejo (ajimenezm)
+    -   Celia María Puente Solis (cpuente)
+    -   Samantha Melissa Pacheco Gómez (spacheco)
+
+-   **Emails:**
+
+    -   [ale.jim1504\@gmail.com](https://mailto:ale.jim1504@gmail.com/)
+    -   [celiapuente09\@gmail.com](https://mailto:celiapuente09@gmail.com/)
+    -   [sam.pg.elo\@gmail.com](https://mailto:sam.pg.elo@gmail.com/)
+
+## **Descripción de los datos**
+
+| Descripción                                        | Información                                                                                                                                                                                                                                                                                                                                                                                                        |
+|--------------|----------------------------------------------------------|
+| Bioproject                                         | [PRJNA152985](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA152985)                                                                                                                                                                                                                                                                                                                                           |
+| Especie                                            | *Drosophila melanogaster*                                                                                                                                                                                                                                                                                                                                                                                          |
+| Tipo de bibliotecas                                | Paired-end                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Método de selección                                | RNA total                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Número de transcriptomas                           | 15                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Número de réplicas biológicas                      | 3 réplicas biológicas                                                                                                                                                                                                                                                                                                                                                                                              |
+| Secuenciador empleado                              | Illumina NovaSeq 6000                                                                                                                                                                                                                                                                                                                                                                                              |
+| Profundidad de secuenciación de cada transcriptoma | 34 M seq                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Tamaño de las lecturas                             | 101 bp                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Artículo científico                                | Kirkland NJ, Skalak SH, Whitehead AJ, Hocker JD, Beri P, Vogler G, Hum B, Wang M, Lakatta EG, Ren B, Bodmer R, Engler AJ. Age-dependent Lamin changes induce cardiac dysfunction via dysregulation of cardiac transcriptional programs. Nat Aging. 2023 Jan;3(1):17-33. doi: 10.1038/s43587-022-00323-8. Epub 2022 Dec 22. PMID: 36845078; PMCID: [PMC9956937](https://pmc.ncbi.nlm.nih.gov/articles/PMC9956937/). |
+
+Este análisis evalúa los efectos del envejecimiento sobre la expresión génica en cardiomiocitos de *Drosophila melanogaster* con énfasis en el papel de LamC. Se compararon muestras de RNA-seq de moscas jóvenes (1 semana) y envejecidas (5 semanas) en dos condiciones de control (w1118 y attp2), así como en una línea con knockdown específico de LamC mediante RNAi (LamCiR). Los datos fueron generados con la plataforma Illumina NovaSeq 6000 (paired-end, \~34 millones de lecturas por muestra).
+
+Se utilizaron herramientas bioinformáticas en R incluyendo DESeq2 para la detección de genes diferencialmente expresados (DEGs), gprofiler2 para el análisis de enriquecimiento funcional (términos GO), y ggplot2 para la visualización de resultados. Los criterios de selección de DEGs incluyeron un adjusted p-value \< 0.05 y log2 fold change significativo.
+
+Los resultados revelan una disminución progresiva de LamC con la edad, acompañada por una desregulación de factores de transcripción cardiacos clave (como Hand, tin y H15) y genes del citoesqueleto. Estos cambios se asocian con pérdida de accesibilidad cromatínica y disfunción cardíaca, sugiriendo que la remodelación nuclear inducida por la edad desempeña un rol central en la resistencia cardíaca y otros perfiles de envejecimiento.
+
+![Figura 0. Pipeline de trabajo.](/Users/alejandrajimenez/Downloads/RNAseq2/linea.png)
+
+Para fines de esta práctica, se seleccionaron las muestras y réplicas biológicas especificadas en la Tabla 2, que incluyen los detalles de cada muestra, el bioSample, el acceso SRA y la replicación biológica correspondiente.
+
+Tabla 2. Distribución de las muestras y réplicas biológicas
+
+| Muestra                                                                     | Condición | Tiempo    | BioSample                                                           | SRA Accession                                                    | Réplica Biológica |
+|---------------|-----------|-----------|-------------|------------|-----------|
+| [GSM5627955](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627955) | w1118     | 1 semana  | [SAMN22321270](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321270) | [SRX12630398](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630398) | w1118_1wk_1       |
+| [GSM5627956](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627956) | w1118     | 1 semana  | [SAMN22321271](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321271) | [SRX12630399](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630399) | w1118_1wk_2       |
+| [GSM5627957](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627957) | w1118     | 1 semana  | [SAMN22321272](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321272) | [SRX12630400](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630400) | w1118_1wk_3       |
+| [GSM5627959](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627959) | w1118     | 5 semanas | [SAMN22321274](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321274) | [SRX12630402](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630402) | w1118_5wk_1       |
+| [GSM5627960](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627960) | w1118     | 5 semanas | [SAMN22321275](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321275) | [SRX12630403](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630403) | w1118_5wk_2       |
+| [GSM5627961](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627961) | w1118     | 5 semanas | [SAMN22321281](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321281) | [SRX12630404](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630404) | w1118_5wk_3       |
+| [GSM5627963](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627963) | attp2     | 1 semana  | [SAMN22321283](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321283) | [SRX12630406](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630406) | attp2_1wk_1       |
+| [GSM5627964](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627964) | attp2     | 1 semana  | [SAMN22321284](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321284) | [SRX12630407](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630407) | attp2_1wk_2       |
+| [GSM5627965](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627965) | attp2     | 1 semana  | [SAMN22321276](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321276) | [SRX12630408](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630408) | attp2_1wk_3       |
+| [GSM5627968](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627968) | attp2     | 5 semanas | [SAMN22321279](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321279) | [SRX12630411](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630411) | attp2_5wk_1       |
+| [GSM5627969](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627969) | attp2     | 5 semanas | [SAMN22321280](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321280) | [SRX12630412](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630412) | attp2_5wk_2       |
+| [GSM5627970](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627970) | attp2     | 5 semanas | [SAMN22321285](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321285) | [SRX12630413](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630413) | attp2_5wk_3       |
+| [GSM5627973](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627973) | LamCiR    | 1 semana  | [SAMN22321288](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321288) | [SRX12630416](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630416) | LamCiR_1wk_1      |
+| [GSM5627974](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627974) | LamCiR    | 1 semana  | [SAMN22321289](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321289) | [SRX12630417](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630417) | LamCiR_1wk_2      |
+| [GSM5627975](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5627975) | LamCiR    | 1 semana  | [SAMN22321290](https://www.ncbi.nlm.nih.gov/biosample/SAMN22321290) | [SRX12630418](https://www.ncbi.nlm.nih.gov/sra?term=SRX12630418) | LamCiR_1wk_3      |
+
+## **Calidad de las secuencias de los datos crudos**
+
+Se analizó la calidad de las secuencias en los datos crudos arrojando los siguientes resultados:
+
+### **Sequence Quality Histograms**
+
+El valor promedio de calidad en cada posición de base se mantiene estable alrededor de 30 a lo largo de toda la lectura, como se muestra en la gráfica. Esto refleja una alta precisión en la identificación de las bases, ya que un puntaje Phred superior a 30 indica una probabilidad de error inferior al 0.1%.
+
+La línea verde, que representa el promedio de calidad, se mantiene consistentemente dentro de la zona verde del gráfico, lo que indica que no hay una degradación significativa en la calidad conforme avanza la lectura. Además, todas las muestras superan el umbral de calidad, lo que sugiere que los datos de secuenciación son confiables y no presentan caídas notables en su precisión.
+
+![Figura 1. Calidad promedio por posición de base en las lecturas crudas de RNA-seq.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/fastqc_per_base_sequence_quality_plot-2.png)
+
+### **Per Sequence Quality Scores**
+
+Para el gráfico de la distribución de los valores promedio de calidad Phred por secuencia la mayoría de las secuencias elegidas se agrupan en torno a valores superiores a 30, lo que indica una excelente calidad general. Este patrón sugiere que la mayoría de las lecturas tienen una probabilidad de error muy baja (menor al 0.1%).
+
+La concentración de picos en la zona verde resalta la consistencia y la precisión de la secuenciación, con muy pocas secuencias cayendo en zonas de calidad media o baja. No se observan acumulaciones relevantes en las regiones rojas (Phred \< 20), lo que sugiere que no hay una proporción significativa de lecturas de baja calidad.
+
+![Figura 2. Distribución de la calidad promedio por secuencia en las lecturas crudasde RNA-seq.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/fastqc_per_sequence_quality_scores_plot-2.png)
+
+### **Per Sequence GC Content**
+
+El gráfico de contenido de GC por secuencia muestra una distribución con un pico principal claramente definido entre el 40 % y el 55 %. Aunque aparece resaltado en rojo, este perfil es esperable y coherente con la composición genómica de Drosophila melanogaster. La presencia de un único pico prominente indica que la mayoría de las secuencias presentan un contenido de GC homogéneo, sin evidencia de sesgos marcados o contaminación.
+
+En casos de contaminación o mezcla de ADN de distintos organismos, se observarían múltiples picos o una distribución atípicamente amplia. Aquí, la forma simétrica y el agrupamiento estrecho alrededor del valor esperado sugieren que la librería está compuesta por secuencias biológicamente coherentes y de alta calidad en términos de composición de bases. El contenido de GC es consistente con lo esperado para la especie de estudio y se espera mejoren posterior al trimming de adaptadores.
+
+![Figura 3. Distribución del contenido de GC por secuencia en las lecturas crudas de RNA-seq.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/fastqc_per_sequence_gc_content_plot-2.png)
+
+### **Sequence Duplication Levels and adapter Content**
+
+El gráfico de duplicación de secuencias muestra que, aunque la mayoría aparece una o dos veces, hay un aumento notable en secuencias altamente duplicadas (\>10, \>100, \>1k). Este patrón puede deberse a la presencia de adaptadores residuales y a la sobre-representación natural de transcritos altamente expresados en RNA-Seq.
+
+![Figura 4. Niveles de duplicación de secuencias en las lecturas crudas de RNA-seq.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/fastqc_sequence_duplication_levels_plot-2.png)
+
+El gráfico de secuencias sobre-representadas muestra que varias muestras contienen un porcentaje elevado de secuencias idénticas que aparecen con mucha frecuencia (hasta más del 10 % en algunos casos). Estas secuencias pueden corresponder a adaptadores no recortados, artefactos de PCR o, en el contexto de RNA-Seq, a transcritos altamente expresados.
+
+Este resultado es coherente con lo observado en el gráfico de niveles de duplicación, donde se detectó una acumulación en categorías de duplicación alta (\>10, \>100, \>1k). Además, la presencia progresiva de adaptadores al final de las lecturas, como se evidenció en el gráfico de contenido de adaptadores, refuerza la hipótesis de que parte de esta sobre-representación es de origen técnico.
+
+![Figura 5. Secuencias sobre-representadas detectadas en las muestras crudas de RNA-seq.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/fastqc_overrepresented_sequencesi_plot.png)
+
+El gráfico que sigue, contenido de adaptadores, muestra un aumento leve pero constante de adaptadores hacia el final de las lecturas (\>60 bp), afectando a menos del 5 % de las secuencias. Aunque bajo, este contenido residual puede contribuir a la duplicación y a secuencias sobre-representadas.Es necesario aplicar trimming para eliminar estos adaptadores.
+
+![Figura 6. Contenido de adaptadores en las lecturas crudas de RNA-seq.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/fastqc_adapter_content_plot-2.png)
+
+Las lecturas crudas presentan buena calidad general, con valores Phred mayores a 30 en todas las posiciones y un contenido de GC consistente con Drosophila melanogaster, lo que indica precisión y ausencia de contaminación. Sin embargo, se observa un leve aumento de adaptadores hacia el final de las secuencias (\<5 %), junto con niveles elevados de duplicación y presencia de secuencias sobre-representadas, probablemente relacionadas con adaptadores residuales y la naturaleza del RNA-Seq. Por ello, es necesario aplicar trimming para remover adaptadores y reducir la duplicación técnica antes de avanzar con los análisis.
+
+## **Trimming de adaptadores**
+
+Dadas las observaciones del control de calidad ---presencia de adaptadores hacia el final de las lecturas, secuencias sobre-representadas y duplicación elevada--- se realizó **trimming** utilizando *Trimmomatic v0.33* en modo *paired-end*. Se usaron parámetros apropiados para lecturas de **101 bases**, incluyendo remoción de adaptadores (`ILLUMINACLIP:2:30:10`), recorte de bases de baja calidad en extremos (`LEADING:3 TRAILING:3`), filtrado por calidad mediante ventana deslizante (`SLIDINGWINDOW:4:15`) y eliminación de lecturas cortas (`MINLEN:50`). Este procesamiento generó archivos pareados.
+
+## **Calidad de las secuencias de los datos procesados**
+
+Habiendo procesado los datos de sus adaptadores se volvió a relaizar un ánalisis de calidad.
+
+Se obtuvieron los siguientes resultados:
+
+### **Sequence Quality Histograms**
+
+Tras aplicar trimming, la gráfica de Phred Score por posición muestra que la calidad promedio de las bases aún se mantiene mayormente por encima de 30 aunque algunas lecturas individuales ahora presentan más variabilidad y caídas hacia los extremos pero siguen dentro de un rango aceptable para RNA-Seq.
+
+![Figura 7. Calidad promedio por posición en las lecturas de RNA-seq tras el trimming.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/1.png)
+
+### **Per Sequence Quality Scores**
+
+Después del trimming, la calidad promedio por secuencia s mantuvo alta, con la mayoría de las lecturas concentradas por encima de un Phred score de 30. La distribución es similar a la observada antes del trimming, lo que indica que las lecturas de buena calidad se conservaron.
+
+![Figura 8. Distribución de la calidad promedio por secuencia después del trimming.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/222.png)
+
+### **Per Sequence GC Content**
+
+Tras el trimming, la calidad general se mantuvo alta y las secuencias útiles fueron conservadas. Aunque la distribución del contenido de GC muestra mayor dispersión y algunos picos en los extremos (0 % y 100 %), esto es esperable debido a la generación de fragmentos más cortos tras el recorte.
+
+![Figura 9. Distribución del contenido de GC por secuencia tras el trimming.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/2.png)
+
+### **Sequence Duplication Levels and adapter Content**
+
+Después del trimming, se observa una mejora clara en los niveles de duplicación: la mayoría de las secuencias aparecen solo una vez y la proporción de secuencias altamente duplicadas disminuyó en varias muestras (zonas verdes y amarillas). Aunque algunas aún presentan picos en duplicaciones altas (\>10, \>100), esto es común en RNA-Seq debido a la alta expresión de ciertos transcritos.
+
+![Figura 10. Niveles de duplicación de secuencias tras el trimming.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/33.png)
+
+Tras el trimming, el análisis de contenido de adaptadores fue tan efectivo que la gráfica ya no se muestra, ya que ninguna muestra superó el umbral de 0.1 % de contaminación. Esto indica una limpieza completa de adaptadores y refleja una preparación adecuada de los datos para los pasos siguientes.
+
+![Figura 11. Resumen del contenido de adaptadores tras el trimming.](/Users/alejandrajimenez/Downloads/RNAseq2/quality/jeje.png)
+
+## **Alineamiento y cuantificación**
+
+Una vez completado el trimming y confirmado que las lecturas estaban libres de adaptadores y con buena calidad, se procedió al alineamiento contra el genoma de *Drosophila melanogaster* utilizando STAR (v2.7.9a). Se ejecutó un script en entorno SGE que procesó todas las muestras pareadas limpias (\*\_1_trimmed.fq.gz y \*\_2_trimmed.fq.gz), utilizando como referencia un índice preconstruido del genoma.
+
+El alineamiento se realizó con **STAR** y se generaron archivos **BAM ordenados por coordenadas**, lo que facilita su uso en etapas posteriores como la cuantificación y visualización. Además, se activó la opción `--quantMode GeneCounts` para obtener directamente los conteos por gen necesarios para el análisis de expresión diferencial.
+
+Tras el alineamiento con STAR, se utilizó un script en R para extraer los conteos por gen y construir una matriz de expresión. Esta matriz se integró con la metadata y se guardó para su análisis posterior.
+
+La metadata fue construida para reflejar el diseño experimental descrito en el estudio de referencia, agrupando las muestras según genotipo (w1118, attp2, LamCiR) y edad (1 semana o 5 semanas). Esta estructura permite identificar las condiciones comparadas en el análisis de expresión diferencial capturando tanto los efectos del envejecimiento como los del silenciamiento de LamC en *Drosophila melanogaster*.
+
+![Figura 12. Tabla de metadatos con las réplicas biologicas](/Users/alejandrajimenez/Downloads/RNAseq2/metadata.png)
+
+Originalmente, la metadata incluía tres columnas: `sample_id`, `condition` y `weeks`, con el objetivo de separar el genotipo de la edad de las muestras. Sin embargo, esta estructura generó conflictos al momento de construir el modelo de diseño en DESeq2 ya que la combinación de factores no era reconocida correctamente. Por esta razón, se optó por una única columna `condition` que agrupa ambas variables (por ejemplo, *w1118_1wk*, *attp2_5wk*), lo que facilitó la especificación del diseño experimental y permitió realizar comparaciones directas entre grupos definidos.
+
+## **Importación a R**
+
+### **Normalización**
+
+Para corregir diferencias en la profundidad de secuenciación entre muestras, se normalizaron los datos de expresión ya cargados en R usando DESeq2. Esto se hizo a partir del objeto **dds**, creado combinando la matriz de cuentas filtradas con la metadata mediante DESeqDataSetFromMatrix. Luego, se aplicó una transformación de varianza estabilizada (VST), que reduce la dependencia entre media y varianza, permitiendo una comparación más precisa entre muestras y facilitando análisis exploratorios como PCA.
+
+### **Detección y corrección por batch effect**
+
+Aplicamos corrección por batch effect porque, al observar el PCA original, notamos una distribución aparentemente atípica de las muestras que no reflejaba claramente la separación esperada entre condiciones biológicas. Sospechamos que esto podía deberse a que las muestras fueron recolectadas y/o secuenciadas en distintos momentos, introduciendo variación técnica no deseada. Por ello, realizamos la corrección usando removeBatchEffect de limma tratando condition como un posible factor de batch:
+
+![Figura 13. Análisis de componentes principales (PCA) posterior a corrección por efecto de batch.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/PCA/pca_batch.png)
+
+Sin embargo, tras comparar ambos PCA, observamos que el resultado sin corrección de batch effect explicaba una mayor proporción de la varianza (63 % vs. 43 %) y formaba agrupamientos más claros y biológicamente coherentes. Por ello, decidimos continuar con el análisis sin aplicar dicha corrección.
+
+## **PCA**
+
+El PCA original sin correción por batch effect fue: ![Figura 14. Análisis de componentes principales (PCA) previo a corrección por efecto de batch.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/PCA/pca.png)
+
+Aunque el PCA logra capturar una proporción considerable de la varianza (63 % en PC1), la separación entre grupos no es del todo clara. Si bien algunos grupos como w1118_1wk y w1118_5wk parecen agruparse, otros como LamCiR_1wk y attp2_1wk se superponen parcialmente, y hay muestras que se alejan notablemente del grupo al que hipoteticamente deberían acercarse. Esto sugiere que existe variabilidad biológica o técnica no completamente explicada, y que si bien hay cierta estructura, la separación entre condiciones no es perfecta. Aun así, el patrón general apunta a que las diferencias por edad y genotipo están influyendo en la expresión génica y marcando una distinción importante entre condiciones por genotipo especialmente.
+
+En el estudio original de Bai et al. (2021), se utilizaron cinco réplicas biológicas por condición, lo que permitió una mayor robustez estadística y una mejor definición de los patrones de expresión observados. En contraste, nuestro análisis se basa en solo tres réplicas por grupo, lo cual puede limitar la capacidad de detectar agrupamientos claros en el PCA. Esta diferencia en el número de réplicas podría explicar por qué, aunque se observa cierta separación entre condiciones, algunos grupos se solapan o presentan mayor dispersión. Con más muestras, sería posible reducir la influencia de la variabilidad biológica y técnica, y obtener una representación más fiel de las diferencias inducidas por la edad o el silenciamiento de LamC.
+
+A pesar del menor número de réplicas biológicas en comparación con el estudio original, es posible observar agrupaciones que tienen sentido biológico. Por ejemplo, las muestras de w1118_1wk y w1118_5wk se agrupan entre sí y se separan en el eje PC2, lo cual es coherente con un efecto de la edad y genotipo. Asimismo, LamCiR_1wk forma un grupo relativamente compacto y separado del control attp2_1wk, lo que podría señalar una consecuencia del silenciamiento de LamC. Aunque la resolución del PCA podría mejorar con más réplicas, los patrones observados reflejan tendencias consistentes con lo esperado según la hipótesis experimental
+
+## **Ánalisis estadistico para identificar DEG**
+
+### **Contrastes**
+
+Se trabajó con cinco condiciones experimentales para evaluar los efectos de la edad y del silenciamiento de LamC en Drosophila. Las moscas w1118 (wild-type) y attp2 (control RNAi) se analizaron a las 1 y 5 semanas de edad para observar los cambios asociados al envejecimiento. Además, se incluyó la condición LamCiR_1wk, correspondiente a moscas jóvenes con silenciamiento de LamC, para evaluar su impacto sobre la expresión génica. Estas condiciones permiten comparar directamente el efecto de la edad y del knockdown de LamC en corazones de mosca.
+
+El código de contrastes compara condiciones experimentales para identificar genes diferencialmente expresados con DESeq2. Se seleccionan las muestras, se define la variable de comparación y se corre el análisis con `DESeq()`. Luego, se extraen y guardan los resultados del contraste especificado. Esto se repite para evaluar los efectos de la edad y del silenciamiento de *LamC* de forma pareada.
+
+Con base en el diseño experimental del estudio se definieron y ejecutaron cuatro contrastes para evaluar por separado y en combinación las consecuencias del **envejecimiento** y del **silenciamiento de *LamC*** en *Drosophila melanogaster*:
+
+| Título                            | Contraste                    | Descripción                                                                                                                                                                                                                                                                                                         |
+|-----------|-----------|--------------------------------------------------|
+| **Envejecimiento en wild-type**   | **w1118_5wk vs. w1118_1wk**  | Evalúa los cambios en la expresión génica asociados al envejecimiento en un fondo **wild-type**. Útil como referencia para identificar genes cuya expresión varía naturalmente con la edad, sin manipulación genética.                                                                                              |
+| **Envejecimiento en fondo attp2** | **attp2_5wk vs. attp2_1wk**  | Similar al contraste anterior, pero realizado en el fondo genético **control para RNAi** (*attp2*). Permite distinguir entre los efectos del envejecimiento y posibles artefactos introducidos por el sistema de interferencia génica.                                                                              |
+| **Efecto de LamC en jóvenes**     | **LamCiR_1wk vs. attp2_1wk** | Analiza el efecto del **silenciamiento de *LamC*** en moscas jóvenes. La comparación con su control correspondiente (*attp2_1wk*) permite identificar cambios en la expresión atribuibles específicamente al *knockdown* de *LamC*, sin la influencia de la edad.                                                   |
+| **LamC simula envejecimiento**    | **LamCiR_1wk vs. attp2_5wk** | Replica uno de los análisis más relevantes del estudio original, que mostró que el silenciamiento de *LamC* en moscas jóvenes puede inducir un perfil de expresión **similar al envejecimiento natural**. Permite evaluar si la disfunción inducida por *LamC* simula un estado envejecido a nivel transcripcional. |
+
+## **Visualización**
+
+A partir de los contrastes realizados entre condiciones pareadas para identificar genes diferencialmente expresados se generaron visualizaciones. Para cada contraste se generó un volcano plot, que muestra la significancia y magnitud del cambio en la expresión de los genes junto con dos heatmaps: uno basado en la expresión normalizada mediante VST, y otro que representa los valores de log2 fold change.
+
+A continuación el ánalisis visual por contraste:
+
+**Envejecimiento en wild-type:** w1118_5wk vs. w1118_1wk
+
+La primer gráfica corresponde a un volcano plot que muestra los cambios en la expresión génica entre moscas wild-type (w1118) de 1 semana y 5 semanas de edad. Al tratarse de un contraste entre dos condiciones genotipicas iguales (sin manipulación experimental más allá de la edad) la gráfica refleja los cambios transcripcionales naturales asociados al envejecimiento.
+
+Dado que la referencia es w1118_5wk, los genes que se encuentran más expresados en el gráfico corresponden a moscas jóvenes. En el volcano plot se identifica que los genes upregulated asciende a 150 mientras que los downregulated son 43, lo que refuerza que el envejecimiento conlleva reducción generalizada en la expresión génica. Esta asimetría refleja una pérdida predominante de expresión génica con la edad más que una activación de nuevos genes en etapas tardías: un perfil completamente esperable de observar durante el envejecimiento.
+
+![Figura 15. Volcano plot para w1118_5wk vs. w1118_1wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/VolcanoPlot_w1118_1wk_vs_5wk.png)
+
+Este patrón por envejecimiento natural se confirma en el heatmap de expresión normalizada donde se visualizan los 20 genes más significativamente afectados en el contraste. La mayoría muestra una expresión más alta en las muestras jóvenes, destacando genes como Drsl5, Pxn, PGRP-SD, edin y Hml, todos con expresión elevada en las moscas de 1 semana y disminución en las de 5 semanas. Esta represión con la edad es consistente entre réplicas. En menor medida, genes como CG1358 y CG17109 presentan niveles más altos en moscas envejecidas, aunque con diferencias a ojo menos pronunciadas. Biológicamente, estos resultados son coherentes con la literatura: muchos de los genes más expresados en jóvenes están involucrados en respuesta inmune innata y defensa frente a infecciones, funciones que tienden a disminuir con la edad en Drosophila.
+
+Un ejemplo representativo es el gen Pxn (Peroxidasin), cuya expresión elevada en moscas jóvenes sugiere una mayor actividad de los hemocitos y una respuesta inmunitaria más robusta en etapas tempranas. Este gen codifica una peroxidasa extracelular que combina dominios típicos de proteínas de la matriz extracelular. Según Nelson et al. (1994), "Peroxidasin is a novel peroxidase that contains domains characteristic of extracellular matrix proteins. It is secreted and deposited in the extracellular matrix of embryonic tissues. We propose that peroxidasin functions uniquely in extracellular matrix consolidation, phagocytosis and defense, and may contribute to morphogenetic processes during development through its dual peroxidase and matrix-interaction properties" (The EMBO Journal). Su rol dual en consolidación de matriz, fagocitosis y defensa sugiere que no solo participa en la inmunidad, sino también en el mantenimiento tisular y procesos de desarrollo, funciones que podrían estar más activas o requeridas en organismos jóvenes.
+
+Este patrón de envejecimiento y apagado de genes esta respaldado por el artículo referencia donde observaron que el envejecimiento y la disrupción de LamC provocan una disminución en la expresión de genes relacionados con la inmunidad y la matriz extracelular como Pxn. Aunque otros genes observados aquí---como Drsl5, edin, Hml y PGRP-SD---no son discutidos explícitamente en el artículo, pertenecen a rutas bien caracterizadas de defensa inmune en Drosophila, reforzando la interpretación de que el envejecimiento conlleva una represión transcripcional de genes inmunes y una posible inmunosenescencia progresiva.
+
+![Figura 16. Heatmap vsd para w1118_1wk vs 5wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_vsd_topgenes_w1118_1wk_vs_5wk.png)
+
+La misma tendencia se observa en el heatmap de log2FoldChange para estos genes, donde casi todos presentan valores negativos, reflejando una disminución de su expresión en moscas envejecidas. Genes como Pxn, edin, Drsl5, ninaD y PGRP-SD destacan por sus cambios más pronunciados, mostrando una represión de hasta 2 o 3 unidades en escala logarítmica. Esta representación condensa visualmente la magnitud y dirección del cambio, confirmando que la mayoría de los genes más significativos en el contraste están activamente reprimidos con la edad. El patrón es consistente con una pérdida de funciones asociadas a la respuesta inmune, estructura tisular y defensa celular, características frecuentemente reportadas durante el envejecimiento en Drosophila.
+
+![Figura 17. Heatmap log2FoldChange para w1118_1wk vs 5wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_log2FoldChange_topgenes_w1118_1wk_vs_5wk.png)
+
+**Envejecimiento en fondo attp2:** attp2_5wk vs. attp2_1wk
+
+La figura muestra un volcano plot para el contraste entre moscas attp2 jóvenes (1 semana) y attp2 envejecidas (5 semanas). Como en el contraste anterior con fondo wild-type, se observa una mayor cantidad de genes con mayor expresión en jóvenes, lo cual es consistente con la tendencia general de pérdida transcripcional asociada al envejecimiento. Sin embargo, en este caso los cambios son menos marcados: se identifican alrededor de 18 genes más activos en jóvenes y apenas 8 en viejas, con diferencias más cercanas al límite de detección. A diferencia del volcano plot de w1118, aquí no se observan genes con caídas o aumentos muy pronunciados, lo que sugiere que el envejecimiento en el fondo attp2 tiene un impacto más tenue a nivel de expresión génica. Esto puede deberse a características particulares de esta línea, que es usada como control para RNAi, y podría tener una respuesta al envejecimiento más atenuada o simplemente distinta. Aun así, se mantiene la misma lógica general: la edad tiende a silenciar genes que están más activos en etapas jóvenes.
+
+En este caso la expresión diferencial fue consistentemente a lo antes mencionado menos extrema con 77 genes upregulated y 28 downregulated utilizando como referencia el grupo de 5 semanas.
+
+![Figura 18. Volcano plot para attp2_5wk vs. attp2_1wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/VolcanoPlot_attp2_1wk_vs_5wk.png)
+
+Un patrón similar al observado en el fondo w1118 se repite en el heatmap de expresión normalizada del contraste attp2_5wk vs attp2_1wk, donde también predominan genes con mayor expresión en las muestras jóvenes. Aunque la magnitud de los cambios parece menos pronunciada visualmente, se mantiene la tendencia a una disminución generalizada en la expresión con la edad. Genes como edin, Pxn, CG32259, CG10814 y CG44774 presentan niveles elevados en las muestras de 1 semana, mientras que en las de 5 semanas su expresión se reduce notablemente. Esta continuidad con lo observado previamente en w1118 refuerza la idea de que el envejecimiento natural en Drosophila, incluso en distintos fondos genéticos, implica una represión de genes inmunes y de matriz extracelular, tal como se describió en el caso de Pxn. El hecho de que este patrón se conserve en attp2 ---una línea modificada para estudios de interferencia por RNAi--- sugiere que estos cambios no dependen exclusivamente del fondo genético, sino que forman parte de un programa transcripcional común al envejecimiento.
+
+![Figura 18. Heatmap vsd para attp2_5wk vs. attp2_1wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_vsd_topgenes_attp2_1wk_vs_5wk.png)
+
+El heatmap de log2FoldChange muestra que, si bien la mayoría de los genes tienden a estar reprimidos con la edad, también hay un subconjunto que presenta mayor expresión en moscas envejecidas. Esto sugiere que, junto al apagado de programas activos en juventud, el envejecimiento podría activar respuestas específicas en etapas tardías. El hecho de que Pxn, por ejemplo, aparezca nuevamente entre los más afectados refuerza su posible relevancia como marcadore de envejecimiento transcripcional.
+
+![Figura 19. Heatmap log2FoldChange para attp2_5wk vs. attp2_1wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_log2FoldChange_topgenes_attp2_1wk_vs_5wk.png)
+
+**Efecto de LamC en jóvenes:** LamCiR_1wk vs. attp2_1wk
+
+En esta gráfica se comparan dos grupos de moscas jóvenes: las que tienen el knockdown de LamC (LamCiR_1wk) y su control genético correspondiente (attp2_1wk). Aunque ambas tienen la misma edad, sí se ve una diferencia clara en la expresión de varios genes. Hay un grupo pequeño pero definido de genes upregulated en LamCiR, y unos pocos downregulated. Esto muestra que el silenciamiento de LamC ya está teniendo un efecto visible y medible en la expresión génica, incluso desde etapas muy tempranas. No es un cambio masivo como el que se ve con el envejecimiento, pero sí sugiere que el perfil transcripcional ya empieza a verse diferente al del control, lo cual podría marcar el inicio de un camino distinto en la regulación génica. En total, se encontraron 16 genes upregulated y 4 downregulated en LamCiR_1wk, reforzando la idea de que el knockdown de LamC comienza a alterar la expresión génica desde fases tempranas del desarrollo.
+
+![Figura 20. Volcano plot para LamCiR_1wk vs. attp2_1wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/VolcanoPlot_LamCiR_vs_1wk.png)
+
+El heatmap de expresión normalizada muestra una separación entre LamCiR y attp2 con varios genes upregulated en LamCiR siendo la única diferencia el knocdown. Entre los que presentan mayor diferencia de expresión destacan CG2493, IA-2, wb, NimC1 y NimC2, todos con niveles elevados en las muestras LamCiR y mucho más bajos en el control. El patrón es consistente entre réplicas y confirma que el knockdown de LamC ya está generando un cambio específico en el perfil transcripcional, suficiente para diferenciar los grupos desde etapas tempranas. Este cambio en la expresión observado en el heatmap es coherente con lo reportado por Kirkland et al. (2022), quienes demostraron que la reducción de LamC en cardiomiocitos jóvenes puede inducir alteraciones morfológicas y funcionales similares a las observadas con la edad. Como mencionan en el estudio "Nuclei extracted from LamC RNAi hearts at 1 week were stiffer than age-matched controls and mimicked 4-week-old control nuclei, whereas LamB RNAi heart nuclei were softer than controls and did not phenocopy aging. [...] Only LamC RNAi flies had shortened lifespan, especially for adult flies of median age, compared to the background control." (Kirkland et al., 2022, Nature Aging). Incluso en ausencia de envejecimiento, el knockdown de LamC puede generar una desviación temprana del programa transcripcional normal. La presencia de genes upregulated en LamCiR en el heatmap podría reflejar una respuesta temprana a estos cambios estructurales y funcionales, activando rutas que anticipan la desregulación asociada al envejecimiento.
+
+![Figura 21. Heatmap vsd para LamCiR_1wk vs. attp2_1wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_vsd_topgenes_LamCiR_vs_1wk.png)
+
+En este heatmap, que muestra los valores de log2FoldChange en LamCiR con respecto a attp2_1wk, se observa una separación definida: los genes en rojo están upregulated en LamCiR, mientras que los azules están downregulated. Algunos como ninaD y phr presentan aumentos notorios, mientras que otros muestran una caída marcada. El patrón indica que LamC KD ya es capaz de modificar selectivamente la expresión de varios genes en comparación con su control.
+
+![Figura 22. Heatmap log2FoldChange para LamCiR_1wk vs. attp2_1wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_log2FoldChange_topgenes_LamCiR_vs_1wk.png)
+
+**LamC simula envejecimiento:** LamCiR_1wk vs. attp2_5wk
+
+En este último volcano plot se compara LamCiR_1wk con attp2_5wk, siendo la referencia el grupo control envejecido. Lo que se busca en este contraste es evaluar si el knockdown de LamC en moscas jóvenes replica un estado transcripcional envejecido y un resultado visible es un desbalance en la expresión génica. Se identifican 71 genes downregulated en LamCiR_1wk, es decir, genes que están significativamente menos expresados en comparación con las moscas viejas. Entre ellos se encuentran factores de transcripción cardíacos clave como Hand, Tinman y H15 aparte de genes del citoesqueleto. Esta represión coincide con los fenotipos observados en las figuras 3 y 5 del estudio original, donde se describe pérdida de contractilidad y desorganización de sarcómeros. Por otro lado, hay 51 genes upregulated en LamCiR_1wk, más activos que en las moscas viejas, posiblemente ligados a respuestas al estrés o mecanismos compensatorios, como rutas de reparación de ADN.
+
+Desde una perspectiva funcional, la pérdida de Lamin C impacta directamente la arquitectura nuclear y reduce la accesibilidad de la cromatina (como se muestra en la Fig. 4 del artículo), lo que explica la supresión de programas miogénicos en LamCiR. En paralelo, los genes upregulated podrían representar intentos de compensación fallida, activando vías inflamatorias o de senescencia sin lograr revertir el desequilibrio estructural y funcional. Esta idea puede interpretarse a la luz de estudios en mamíferos, donde se ha demostrado que los niveles de lamina nuclear están directamente vinculados con la mecánica del núcleo y la respuesta a tensiones externas. Swift et al. (2013) mostraron que "Lamin-A levels scaled with tissue stiffness and contributed to matrix-directed differentiation via modulation of nuclear mechanics" (Swift et al., 2013, Science) lo que sugiere que la reducción de LamC en Drosophila podría alterar no solo la arquitectura nuclear, sino también la forma en que las células perciben y responden al entorno, afectando rutas de diferenciación o mantenimiento estructural.
+
+![Figura 23. Volcano plot para LamCiR_1wk vs. attp2_5wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/VolcanoPlot_LamCiR_1wk_vs_5wk.png)
+
+El heatmap de expresión para el contraste LamCiR_1wk vs attp2_5wk muestra una separación entre ambos grupos. Genes como Hml, Pxn, Ance-5 e IA-2 presentan niveles elevados en attp2_5wk y menores en LamCiR_1wk. Este patrón podría ser reflejo de que aunque el knockdown de LamC en moscas jóvenes induce un cambio transcripcional evidente no parece activar por completo los programas de expresión default del envejecimiento.
+
+Una posible explicación es que LamC KD replica solo algunos efectos estructurales de la edad como alteraciones nucleares o reducción en accesibilidad de cromatina pero no reune la totalid de los estímulos acumulativos que ocurren naturalmente: como el daño genómico, el estrés oxidativo o la inflamación crónica.
+
+Como señalan Kirkland et al. (2022) en el paper de referencía "Only LamC RNAi flies had shortened lifespan, especially for adult flies of median age, compared to the background control," lo que puede indicar que su impacto es funcionalmente importante pero parcial en comparación con el envejecimiento completo. Así, el patrón observado podría reflejar un estado intermedio o alternativo, donde algunas rutas de envejecimiento están reprimidas o desfasadas en lugar de activarse anticipadamente.
+
+![Figura 24. Heatmap vsd para LamCiR_1wk vs. attp2_5wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_vsd_topgenes_LamCiR_1wk_vs_5wk.png)
+
+Finalmente el heatmap de log2FoldChange para LamCiR_1wk vs attp2_5wk muestra un patrón mayoritario de genes downregulated en LamCiR, es decir, menos expresados que en moscas envejecidas. Hay genes relacionados con la matriz extracelular, citoesqueleto e inmunidad, rutas que también se ven afectadas durante el envejecimiento. Sin embargo, también aparecen genes upregulated en LamCiR que no están activados en las moscas viejas, lo que puede sugerir que la pérdida de LamC genera un perfil híbrido, con características envejecidas pero también respuestas particulares al colapso estructural del núcleo.
+
+Esto concuerda con lo reportado por el paper referencía de Kirkland et al. (2022), quienes demostraron que el knockdown cardíaco de LamC reduce la expresión de genes miogénicos, altera la organización sarcomérica, disminuye la contractilidad del corazón y acorta la vida media de las moscas. En palabras de los autores "We observed 344 DEGs resulting from heart-specific LamC loss at 1 week of age and 1,998 DEGs between 1- and 5-week-old attp2 background flies [...] The common DEGs yield biological process GO terms related to aging [...], suggesting that LamC loss creates differential gene expression similar to natural aging." (Kirkland et al., 2022). Además, demostraron que la pérdida de LamC aumenta la rigidez nuclear y disminuye la accesibilidad cromatínica, afectando la expresión de genes dependientes de la arquitectura nuclear. El perfil observado en este heatmap puede interpretarse como consecuencia directa de esos cambios estructurales apoyando al papel de LamC como un intercesor clave del proceso transcripcional en envejecimiento cardíaco.
+
+![igura 25. Heatmap log2FoldChange para LamCiR_1wk vs. attp2_5wk.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/visualizacion/Heatmap_log2FoldChange_topgenes_LamCiR_1wk_vs_5wk.png)
+
+La visualización de los contrastes con volcano plots y heatmaps permitió identificar diferencias claras en los perfiles de expresión entre condiciones ya sea por envejecimiento natural o por manipulación genética. Aunque los patrones varían entre contrastes, en todos se detectaron conjuntos definidos de genes diferencialmente expresados, lo que pde sugerir que los cambios observados no son aleatorios sino que reflejan procesos biológicos específicos.
+
+Visualización por sí sola no dice qué funciones celulares o rutas están implicadas en estos cambios. Por eso, en la siguiente sección se realizará un análisis de enriquecimiento funcional (GO terms) para explorar qué tipo de procesos biológicos podrían estar detrás de estos perfiles transcripcionales alterados y cómo se relacionan con el envejecimiento o la disrupción de LamC.
+
+## **Go Terms**
+
+Para el analisis GoTerms se utilizaron los términos de ontología génica (Gene Ontology, GO), una herramienta ampliamente utilizada en biología para clasificar genes según las funciones que desempeñan. Estos términos se agrupan en categorías como procesos biológicos, funciones moleculares y estructuras celulares. A través de un análisis de enriquecimiento, es posible identificar qué funciones están sobrerrepresentadas entre los genes que se activan o se suprimen en cada contraste experimental.
+
+El análisis se realizó con la herramienta bioinformática gprofiler2, que permite explorar automáticamente qué funciones están asociadas a un grupo de genes, comparándolos con todo el genoma de referencia. Esto nos ayuda a interpretar los resultados de expresión génica en términos biológicos más amplios y a formular hipótesis sobre los mecanismos involucrados en el envejecimiento o en la pérdida de Lamin C.
+
+A continuación las siguientes comparaciones e hipótesis:
+
+### Comparación 1: attp2 -- 1 semana vs 5 semanas
+
+![Figura 26. Genes downregulated en la mosca attp2 en la semana uno contra la cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotDOWN_GO_attp2_1wk_vs_5wk.png)
+
+Genes downregulated
+
+El análisis funcional de los genes diferencialmente expresados hacia la baja en la comparación entre attp2 a una semana y attp2 a cinco semanas reveló una disminución significativa de procesos biológicos asociados al transporte celular, la detección de estímulos ambientales y el desarrollo de estructuras celulares. Entre los términos más enriquecidos se identificaron procesos como fagocitosis, endocitosis, transporte mediado por vesículas, y detección de radiación ultravioleta. También se observaron procesos relacionados con la organización de la matriz extracelular, como la formación de trímeros de colágeno, así como rutas de metabolismo de pigmentos visuales, incluyendo el transporte de carotenoides y la biosíntesis de rodopsina. Esta reducción funcional indica una pérdida progresiva de capacidad celular para responder a estímulos y mantener procesos de renovación y diferenciación, lo cual es consistente con procesos típicos de envejecimiento en Drosophila.
+
+![Figura 27. Genes upregulated en la mosca attp2 en la semana uno contra la cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotUP_GO_attp2_1wk_vs_5wk.png)
+
+Genes upregulated
+
+En contraste, los genes sobreexpresados en attp2 a cinco semanas en comparación con una semana se asociaron predominantemente con procesos inmunológicos, incluyendo respuesta a bacterias Gram-positivas y Gram-negativas, activación de receptores Toll, producción de péptidos antimicrobianos, y catabolismo de peptidoglicano. También se detectó activación de rutas metabólicas relacionadas con la biosíntesis de aminoácidos como la carnitina y la betaína. Estos hallazgos sugieren una activación compensatoria de la respuesta inmune innata, posiblemente como reflejo de daño tisular o acumulación de señales de estrés asociadas al envejecimiento
+
+![Figura 28.  Genes diferencialmente expresados en la comparación entre attp2 a una semana y attp2 a cinco semanas.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/ManhattanGO_attp2_1wk_vs_5wk.png)
+
+Los paneles superiores corresponden a genes downregulated, y los inferiores a upregulated. Cada punto representa un término enriquecido (GO-BP, KEGG, TF, etc.), y su posición en el eje Y indica el nivel de significancia estadística ajustada (--log₁₀ del p-valor ajustado). Se observa que los términos más significativos se agrupan en procesos biológicos (GO-BP), especialmente en genes upregulated, reforzando la activación inmunológica detectada en las figuras anteriores.
+
+En conjunto, los datos sugieren que el envejecimiento en la línea attp2 produce una desregulación dual: por un lado, una disminución en funciones celulares esenciales como el transporte vesicular y el mantenimiento estructural; y por otro, una activación de mecanismos inmunes que podrían reflejar una respuesta a estrés tisular o inflamación crónica. Este patrón de represión de funciones de mantenimiento y activación inmune ha sido reportado en estudios previos como parte de la transición hacia un estado proinflamatorio asociado a la edad en Drosophila melanogaster (Zerofsky et al.; Landis et al.). Este patrón se refleja también en el gráfico Manhattan correspondiente, donde los términos más significativos en genes upregulated se concentran en procesos biológicos (GO-BP).
+
+Esta interpretación se ve reforzada por el gráfico Manhattan correspondiente, donde los términos con mayor significancia se agrupan en procesos biológicos (GO-BP), especialmente entre los genes upregulated.
+
+### Comparación 2: LamCiR 1 semana vs attp2 5 semanas
+
+Genes downregulated
+
+![Figura 29. Genes downregulated en la mosca LamCiR a la semana uno contra attp2 en la semana cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotDOWN_GO_LamCiR_1wk_vs_attp2_5wk.png)
+
+En esta comparación, los genes con expresión disminuida en LamCiR a una semana frente a attp2 a cinco semanas mostraron una supresión significativa de procesos relacionados con la inmunidad innata, como la respuesta humoral, la producción de péptidos antimicrobianos y el catabolismo de peptidoglicano. También se identificaron términos como negative regulation of antibacterial peptide production, lo que podría reflejar una desregulación en la modulación inmune más que una simple supresión. En conjunto, este perfil transcripcional sugiere que la reducción de Lamin C en el tejido cardíaco induce una pérdida temprana de funciones inmunológicas típicamente observadas en etapas avanzadas de vida.
+
+Genes upregulated
+
+![Figura 30. Genes upregulated en la mosca LamCiR a la semana uno contra attp2 en la semana cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotUP_GO_LamCiR_1wk_vs_attp2_5wk.png)
+
+Por otro lado, los genes con mayor expresión en LamCiR a una semana, en comparación con attp2 a cinco semanas, se asociaron con procesos de fagocitosis, hemostasia, coagulación de la hemolinfa y respuesta de melanización, todos vinculados a mecanismos locales de defensa frente a daño. También se observó sobreexpresión de genes implicados en el reconocimiento de peptidoglicano bacteriano. Este patrón indica una activación localizada de la inmunidad, en paralelo con una desregulación de respuestas más amplias.
+
+![Figura 31. Manhattan plot sobre los genes diferencialmente expresados en la mosca LamCir a la semana uno contra la mosca attp2 a la semana cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/ManhattanGO_LamCiR_1wk_vs_attp2_5wk.png)
+
+Este comportamiento transcripcional podría representar un ejemplo de inmunosenescencia prematura, entendida como la disminución progresiva de la eficacia del sistema inmunológico con la edad, lo que conlleva una mayor susceptibilidad a infecciones y enfermedades relacionadas con el envejecimiento. Estudios en Drosophila melanogaster han demostrado que la variabilidad en las respuestas inmunes puede influir significativamente en la inmunosenescencia, resaltando la importancia de este organismo como modelo para investigar los mecanismos subyacentes y las posibles intervenciones terapéuticas (Corbally y Regan, 2022).\
+Este patrón de reorganización inmunológica también ha sido reportado en estudios funcionales previos sobre envejecimiento, donde se ha documentado una activación inapropiada o insuficiente de genes inmunes, incluyendo los involucrados en respuesta humoral, señalización Toll/Imd y síntesis de péptidos antimicrobianos (Zerofsky et al., 2005; Landis et al., 2004).
+
+Este escenario se refleja también en el gráfico Manhattan correspondiente, donde los términos con mayor significancia para genes downregulated se agrupan en la categoría GO-BP, reforzando la desregulación inmunológica observada.
+
+### Comparación 3: LamCiR vs attp2 a una semana
+
+ Genes downregulated
+
+![Figura 32. Genes downregulated en la mosca LamCiR contra attp2 en la semana uno.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotDOWN_GO_LamCiR_vs_attp2_1wk.png)
+
+Los genes expresados a la baja en LamCiR en comparación con attp2, ambas a una semana de edad, se asociaron principalmente con procesos de transporte de isoprenoides, carotenoides y terpenoides, así como con rutas sensoriales como la detección de radiación UV y luz visible, y la biosíntesis de pigmentos visuales. Esta reducción prematura de funciones sensoriales y metabólicas puede reflejar una desregulación estructural o funcional secundaria a la pérdida de Lamin C, lo cual sugiere un estado de deterioro celular anticipado.
+
+ Genes upregulated
+
+![Figura 33. Genes upregulated en la mosca LamCiR contra attp2 en la semana uno.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotUP_GO_LamCiR_vs_attp2_1wk.png)
+
+Por otro lado, los genes sobreexpresados en LamCiR a una semana, en comparación con attp2 en la misma etapa, se asociaron principalmente con procesos de reparación del ADN, como la reparación de dímeros de pirimidina y reparación fotoreactiva, así como con funciones relacionadas con la transcripción de miARN, la transición materno-cigótica y la regulación del desarrollo temprano. Estos hallazgos sugieren una activación de mecanismos de respuesta a daño genético o de reprogramación transcripcional, posiblemente como consecuencia de alteraciones en la integridad nuclear derivadas de la reducción de Lamin C.
+
+La combinación de una represión de rutas sensoriales y metabólicas con una activación de procesos de reparación del ADN y reprogramación génica sugiere que la pérdida de Lamin C en una etapa temprana desencadena un estado de respuesta celular al daño, más que una activación inmune clásica. Estos resultados podrían reflejar estrés genómico o desorganización nuclear, lo cual es consistente con las funciones estructurales conocidas de Lamin C en la arquitectura del núcleo. Este patrón indica que LamCiR a una semana ya presenta un estado alterado, biológicamente distinto de su línea control, caracterizado por la activación prematura de mecanismos compensatorios típicos de células bajo estrés (Zerofsky et al., 2005; Landis et al., 2004).\
+Esta interpretación se ve reflejada también en el gráfico Manhattan correspondiente, donde los términos más significativos entre los genes upregulated pertenecen a categorías de reparación genómica y regulación transcripcional.
+
+![Figura 34. Manhattan plot sobre los genes diferencialmente expresados en la mosca LamCir contra la mosca attp2 .](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/ManhattanGO_LamCiR_vs_attp2_1wk.png)
+
+Se observa que los términos más significativos para los genes upregulated se agrupan principalmente en procesos relacionados con la reparación de ADN y regulación de la transcripción, lo cual es consistente con una activación temprana de mecanismos de respuesta al daño genómico en la línea mutante.
+
+### Comparación 4: w1118 -- 1 semana vs 5 semanas
+
+Genes downregulated
+
+![Figura 35. Genes downregulated en la mosca w1118 en la semana uno contra la cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotDOWN_GO_w1118_1wk_vs_5wk.png)
+
+En la comparación entre w1118 a una semana y w1118 a cinco semanas, los genes expresados a la baja en individuos mayores se asociaron con procesos de fagocitosis, hemostasia, coagulación de la hemolinfa, organización de la matriz extracelular (incluyendo colágeno) y metabolismo de pigmentos. También se observó una reducción en rutas metabólicas de catecolaminas, compuestos fenólicos y biosíntesis de arginina (vía KEGG), lo cual sugiere una pérdida funcional en procesos clave de defensa y mantenimiento estructural durante el envejecimiento. Esta reducción funcional indica un deterioro progresivo de la capacidad de las células para sostener la homeostasis y responder adecuadamente al entorno.
+
+ Genes upregulated
+
+![Figura 36. Genes upregulated en la mosca w1118 en la semana uno contra la cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/barplotUP_GO_w1118_1wk_vs_5wk.png)
+
+Por el contrario, los genes sobreexpresados en w1118 a cinco semanas mostraron una activación marcada de rutas inmunológicas, incluyendo respuesta a bacterias Gram-positivas y Gram-negativas, catabolismo de peptidoglicanos, y activación de la vía de señalización Toll. También se observaron procesos relacionados con organización de microtúbulos y respuesta celular a estímulos externos. Este perfil sugiere que el envejecimiento activa respuestas inmunes sistemáticas, posiblemente como reacción al aumento de daño celular o cambios en la señalización tisular.
+
+![Figura 37. Manhattan plot sobre los genes diferencialmente expresados en la mosca w1118 a la semana 1 contra la cinco.](/Users/alejandrajimenez/Downloads/RNAseq2/figures/goterms/ManhattanGO_w1118_1wk_vs_5wk.png)
+
+Se observa una fuerte representación de términos inmunológicos entre los genes upregulated, como respuesta a peptidoglicanos y activación de receptores Toll, así como una disminución de procesos estructurales y metabólicos entre los genes downregulated, como la biosíntesis de arginina.
+
+En conjunto, la comparación revela que durante el envejecimiento en la línea w1118, se suprimen procesos relacionados con la homeostasis estructural, el metabolismo básico y la respuesta local de defensa, mientras que se activan de forma compensatoria mecanismos inmunológicos más amplios. Este cambio refleja una transición hacia un estado funcional donde predomina una respuesta proinflamatoria, a expensas de funciones de reparación y mantenimiento, un fenómeno descrito previamente en el contexto del envejecimiento en Drosophila melanogaster (Zerofsky et al., 2005; Landis et al., 2004).
+
+\
+Esta tendencia se evidencia también en el gráfico Manhattan correspondiente, donde los términos inmunológicos predominan entre los genes upregulated y los términos metabólicos aparecen entre los downregulated.
+
+## **Limitaciones y conclusiones finales**
+
+A través de los distintos contrastes realizados, se observan patrones consistentes en la expresión génica asociados al envejecimiento y a la pérdida de Lamin C (LamC) en corazones de Drosophila melanogaster. Tanto el envejecimiento natural como el knockdown de LamC provocan una disminución en la expresión de genes relacionados con la inmunidad innata, la organización del citoesqueleto y la matriz extracelular. Este fenómeno sugiere una pérdida progresiva de funciones celulares clave como la defensa inmune y el mantenimiento estructural, lo que puede reflejar una forma de inmunosenescencia y deterioro funcional en el tejido cardíaco.
+
+En particular, el silenciamiento de LamC en moscas jóvenes genera un perfil de expresión que en parte simula el envejecimiento, aunque también activa rutas únicas de respuesta al daño y estrés nuclear. Esta observación es coherente con el estudio de Kirkland et al. (2022), que demostró que la reducción de LamC disminuye la accesibilidad de la cromatina y reprime factores de transcripción cardíacos esenciales como Hand, Tinman y H15. El artículo también muestra que LamC KD en moscas jóvenes causa alteraciones estructurales en los sarcómeros, menor contractilidad y una reducción significativa en la esperanza de vida, reflejando una disfunción cardíaca prematura.
+
+Los análisis de GO confirman esta tendencia: con la edad y con LamC KD hay una represión de rutas asociadas a la homeostasis celular y una activación de rutas inmunológicas, aunque en LamCiR esta activación parece desorganizada o incompleta. Por tanto, se sugiere que la pérdida de LamC no solo contribuye al deterioro estructural del núcleo, sino que también afecta directamente el programa transcripcional cardíaco.
+
+Estos hallazgos están en línea con los resultados del estudio original, que propone que los cambios nucleares relacionados con la edad, como la reducción de Lamin C, son un mecanismo clave en la disfunción cardíaca, y que mantener la expresión de LamC o de factores de transcripción cardíacos podría ayudar a conservar la función del corazón durante el envejecimiento.
+
+### **Limitaciones del análisis**
+Número reducido de réplicas biológicas: A diferencia del estudio de referencia, que utilizó cinco réplicas por condición, este análisis se basó en tres. Esto limita la capacidad estadística para detectar diferencias sutiles y puede aumentar la variabilidad entre muestras.
+
+- Posibles efectos de batch: Aunque se evaluó y se descartó la necesidad de corregir por batch effect tras comparar PCA corregido y sin corregir, la posibilidad de variación técnica debida a diferentes fechas de procesamiento o secuenciación no se puede descartar completamente.
+
+- Restricciones del RNA-seq bulk: El análisis se basó en RNA-seq de corazón completo, lo cual puede diluir cambios específicos en cardiomiocitos, especialmente si otras células como las pericárdicas no presentan los mismos patrones. Esto ya ha sido señalado en el artículo de Kirkland et al., donde indican que los cardiomiocitos representan solo un pequeño porcentaje del tejido cardíaco total.
+
+- Falta de validaciones funcionales: Aunque los cambios de expresión observados son consistentes con los reportes previos, se necesitarían experimentos funcionales (como pruebas de contractilidad o estudios de longevidad) para confirmar el impacto biológico de los DEGs observados.
+
+## Referencias
+  Corbally, M. K., & Regan, J. C. (2022). Fly immunity comes of age: The utility of Drosophila as a model for studying variation in immunosenescence. Frontiers in Aging, 3, 1016962. https://doi.org/10.3389/fragi.2022.1016962
+
+  Kirkland, N. J., Skalak, S. H., Whitehead, A. J., Hocker, J. D., Beri, P., Vogler, G., Hum, B., Wang, M., Lakatta, E. G., Ren, B., Bodmer, R., & Engler, A. J. (2022). Age-dependent Lamin changes induce cardiac dysfunction via dysregulation of cardiac transcriptional programs. Nature Aging, 3, 17–33. https://doi.org/10.1038/s43587-022-00323-8
+  
+  Landis, G. N., Abdueva, D., Skvortsov, D., Yang, J., Rabin, B. E., Carrick, J., Tavaré, S., & Tower, J. (2004). Similar gene expression patterns characterize aging and oxidative stress in Drosophila melanogaster. Proceedings of the National Academy of Sciences of the United States of America, 101(20), 7663–7668. https://doi.org/10.1073/pnas.0307605101
+  
+  Nelson, R. E., Fessler, L. I., Takagi, Y., Blumberg, B., Keene, D. R., Olson, P. F., Parker, C. G., & Fessler, J. H. (1994). Peroxidasin: A novel enzyme–matrix protein of Drosophila development. The EMBO Journal, 13(15), 3438–3447.
+
+  Swift, J., Ivanovska, I. L., Buxboim, A., Harada, T., Dingal, P. C. D. P., Pinter, J., Pajerowski, J. D., Spinler, K. R., Shin, J.-W., Tewari, M., Rehfeldt, F., Speicher, D. W., & Discher, D. E. (2013). Nuclear lamin-A scales with tissue stiffness and enhances matrix-directed differentiation. Science, 341(6149), 1240104. https://doi.org/10.1126/science.1240104
+
+  Zerofsky, M., Harel, E., Silverman, N., & Tatar, M. (2005). Aging of the innate immune response in Drosophila melanogaster. Aging Cell, 4(2), 103–108. https://doi.org/10.1111/j.1474-9728.2005.00147.x
+
+
