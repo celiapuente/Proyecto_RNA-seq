@@ -13,7 +13,7 @@
 
 ## Resumen del trabajo
 
-Este proyecto consistió en el análisis de datos de RNA-seq desde la descarga de datos crudos hasta la importación a R y la creación de metadatos. A continuación, se describen los pasos realizados, junto con las rutas a los scripts y datos utilizados.
+Este proyecto consistió en el análisis de datos de RNA-seq 
 
 ---
 
@@ -89,23 +89,50 @@ Los archivos resultantes se almacenaron en: /mnt/atgc-d1/bioinfoII/rnaseq/BioPro
 Se repitió FastQC y MultiQC con el script:/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/qc2.sge
 
 ###  4️⃣ Descarga del genoma de referencia
-Se obtuvo el genoma desde UCSC:
+Se descargaron archivos desde UCSC:
+```bash
 wget https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/dm6.fa.gz
 wget https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/genes/dm6.refGene.gtf.gz
-Después se descomprimieron los archivos:
 gunzip dm6.fa.gz
 gunzip dm6.refGene.gtf.gz
-Estos archivos estan contenido en : /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/reference/
+```
+Archivos almacenados en:
+/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/reference/
 
-6. Secreo un indice en STAR
-Se creó el índice del genoma utilizando el script: /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/STAR_index.sge/.
+5️⃣ Creación del índice STAR
+Se generó el índice del genoma con el script:
+/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/STAR_index.sge
 
-7. Alineamiento y conteo de lecturas con STAR.
-El alineamiento y conteo se realizaron con STAR.
-El script de alineamiento generó archivos BAM, que luego fueron usados para conteo, el script se encuentra en: /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/ali_STAR.sge/
-
-8.Importar datos de STAR a R + creacion de metadata
-
-Se importaron los datos a R con el siguiente script de load_data_inR_Eq3.R:
+6️⃣ Alineamiento y conteo de lecturas con STAR
+Se utilizó el script:
+/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/ali_STAR.sge
 
 
+7️⃣ Importación a R y creación de metadatos
+Los resultados fueron importados a R utilizando el script: load_data_inR_Eq3.R
+Posteriormente se generó la metadata necesaria para el análisis diferencial posterior.
+
+8️⃣ Análisis de Expresión Diferencial (DEG)
+Se utilizó el script: DEG_analysis_Eq3.R
+Este script realiza lo siguiente:
+- Se carga raw_counts.csv y metadata.csv
+- Creación del objeto dds con DESeq2
+- Ejecución del análisis de expresión diferencial
+- Normalización de los datos
+- Evaluación de batch effects
+- Obtención de resultados para distintos contrastes
+
+9️⃣ Visualización de los resultados
+Se utilizaron los siguientes scripts: Visualizacion1.R, Visualizacion2.R, Visualizacion3.R y Visualizacion4 .R
+Donde estos scripts incluyen:
+Gráficas: PCA, heatmaps, volcano plots
+
+🔟 Análisis funcional: GO terms
+Este script realiza el análisis de enriquecimiento de términos funcionales Gene Ontology (GO) a partir de los genes diferencialmente expresados (DEGs).
+
+Para analizar distintos contrastes, simplemente se modifica la línea del archivo de entrada:
+```R
+# Seleccionar un archivo CSV con resultados de DEG
+files <- "DE_LamCiR_vs_attp2_1wk.csv"
+```
+De esta manera, el mismo script puede reutilizarse para todos los contrastes, cambiando únicamente el archivo .csv correspondiente a cada comparación.
