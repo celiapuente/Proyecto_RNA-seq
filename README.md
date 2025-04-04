@@ -109,7 +109,7 @@ Se utilizó el script:
 
 
 7️⃣ Importación a R y creación de metadatos
-Los resultados fueron importados a R utilizando el script: load_data_inR_Eq3.R
+Los resultados fueron importados a R utilizando el script: [load_data_inR_Eq3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/load_data_inR_Eq3.R)
 Posteriormente se generó la metadata necesaria para el análisis diferencial posterior.
 
 8️⃣ Análisis de Expresión Diferencial (DEG)
@@ -123,11 +123,12 @@ Este script realiza lo siguiente:
 - Obtención de resultados para distintos contrastes
 
 9️⃣ Visualización de los resultados
-Se utilizaron los siguientes scripts: Visualizacion1.R, Visualizacion2.R, Visualizacion3.R y Visualizacion4 .R
+Se utilizaron los siguientes scripts: [Visualizacion1.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion1.R), [Visualizacion2.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion2.R), [Visualizacion3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion3.R) y [Visualizacion4.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion4.R)
 Donde estos scripts incluyen:
 Gráficas: PCA, heatmaps, volcano plots
 
 🔟 Análisis funcional: GO terms
+Se utilizó el script: [GOterms_analysis.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/go_terms.R)
 Este script realiza el análisis de enriquecimiento de términos funcionales Gene Ontology (GO) a partir de los genes diferencialmente expresados (DEGs).
 
 Para analizar distintos contrastes, simplemente se modifica la línea del archivo de entrada:
