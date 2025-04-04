@@ -93,6 +93,7 @@ Los archivos resultantes se almacenaron en: /mnt/atgc-d1/bioinfoII/rnaseq/BioPro
 Se repitió FastQC y MultiQC con el script:/mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/qc2.sge
 
 ###  4️⃣ Descarga del genoma de referencia
+
 Se descargaron archivos desde UCSC:
 ```bash
 wget https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/dm6.fa.gz
@@ -104,22 +105,29 @@ Archivos almacenados en:
 /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/reference/
 
 5️⃣ Creación del índice STAR
+
 Se generó el índice del genoma con el script:
 /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/STAR_index.sge
 
+Este script genera un índice del genoma de referencia usando STAR a partir de la secuencia fasta (dm6.fa) y el archivo de anotación GTF, para preparar el genoma y así permitir el alineamiento eficiente de lecturas en análisis posteriores.
+
 6️⃣ Alineamiento y conteo de lecturas con STAR
+
 Se utilizó el script:
 /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/scripts/ali_STAR.sge
 
+Este script realiza alineamiento de lecturas *paired-end* previamente recortadas contra un genoma de referencia indexado utilizando STAR, generando archivos BAM ordenados y conteos por gen para cada muestra.
 
 7️⃣ Importación a R y creación de metadatos
+
 Los resultados fueron importados a R utilizando el script: [load_data_inR_Eq3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/load_data_inR_Eq3.R)
-Posteriormente se generó la metadata necesaria para el análisis diferencial posterior.
+Posteriormente se generó la metadata necesaria para el análisis diferencial posterior, que se encuentra en: [metadata](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/metadata.csv)
 
 8️⃣ Análisis de Expresión Diferencial (DEG)
+
 Se utilizó el script: [DEG_Analysis_Eq3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/DEG_Analysis_Eq3.R)
 Este script realiza lo siguiente:
-- Se carga raw_counts.csv y metadata.csv
+- Se carga [raw_counts.csv](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/raw_counts/raw_counts.csv) y [metadata.csv](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/metadata.csv)
 - Creación del objeto dds con DESeq2
 - Ejecución del análisis de expresión diferencial
 - Normalización de los datos
@@ -127,11 +135,13 @@ Este script realiza lo siguiente:
 - Obtención de resultados para distintos contrastes
 
 9️⃣ Visualización de los resultados
+
 Se utilizaron los siguientes scripts: [Visualizacion1.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion1.R), [Visualizacion2.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion2.R), [Visualizacion3.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion3.R) y [Visualizacion4.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/Visualizacion4.R)
 Donde estos scripts incluyen:
 Gráficas: PCA, heatmaps, volcano plots
 
 🔟 Análisis funcional: GO terms
+
 Se utilizó el script: [GOterms_analysis.R](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/scripts_R/go_terms.R)
 Este script realiza el análisis de enriquecimiento de términos funcionales Gene Ontology (GO) a partir de los genes diferencialmente expresados (DEGs).
 
