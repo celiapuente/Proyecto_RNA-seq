@@ -21,7 +21,8 @@ Los resultados revelan una disminución progresiva de LamC con la edad, acompañ
 
 ---
 
-🔗 [Enlace al reporte renderizado](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/Reporte-Final-RNA-Seq---Age-dependent-Lamin-changes-induce-cardiac-dysfunction-via-dysregulation-of-cardiac-transcriptional-programs.html)
+## 🔗 [Enlace al reporte renderizado](https://github.com/celiapuente/Proyecto_RNA-seq/blob/main/Reporte-Final-RNA-Seq---Age-dependent-Lamin-changes-induce-cardiac-dysfunction-via-dysregulation-of-cardiac-transcriptional-programs.html)
+---
 
 ### 📁 Organización general
 
