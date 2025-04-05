@@ -1,0 +1,204 @@
+SRR414898
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414898_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414898_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR414898
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 12 18:34:22 ..... started STAR run
+Mar 12 18:34:22 ..... loading genome
+Mar 12 18:34:25 ..... started mapping
+Mar 12 18:40:15 ..... finished mapping
+Mar 12 18:40:16 ..... started sorting BAM
+Mar 12 18:40:55 ..... finished successfully
+SRR414903
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414903_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414903_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR414903
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 12 18:40:59 ..... started STAR run
+Mar 12 18:41:00 ..... loading genome
+Mar 12 18:41:01 ..... started mapping
+Mar 12 18:46:18 ..... finished mapping
+Mar 12 18:46:18 ..... started sorting BAM
+Mar 12 18:47:01 ..... finished successfully
+SRR414908
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414908_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414908_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR414908
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 12 18:47:05 ..... started STAR run
+Mar 12 18:47:05 ..... loading genome
+Mar 12 18:47:07 ..... started mapping
+Mar 12 18:53:38 ..... finished mapping
+Mar 12 18:53:39 ..... started sorting BAM
+Mar 12 18:54:43 ..... finished successfully
+SRR414910
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414910_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414910_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR414910
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 12 18:54:49 ..... started STAR run
+Mar 12 18:54:49 ..... loading genome
+Mar 12 18:54:51 ..... started mapping
+Mar 12 19:02:00 ..... finished mapping
+Mar 12 19:02:00 ..... started sorting BAM
+Mar 12 19:03:30 ..... finished successfully
+SRR414915
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414915_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414915_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR414915
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 12 19:03:37 ..... started STAR run
+Mar 12 19:03:37 ..... loading genome
+Mar 12 19:03:39 ..... started mapping
+Mar 12 19:09:57 ..... finished mapping
+Mar 12 19:09:57 ..... started sorting BAM
+Mar 12 19:10:55 ..... finished successfully
+SRR414920
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414920_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR414920_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR414920
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 12 19:11:00 ..... started STAR run
+Mar 12 19:11:00 ..... loading genome
+Mar 12 19:11:02 ..... started mapping
+Mar 12 19:17:13 ..... finished mapping
+Mar 12 19:17:14 ..... started sorting BAM
+Mar 12 19:18:24 ..... finished successfully
+SRR16352841
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352841_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352841_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR16352841
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 16:19:21 ..... started STAR run
+Mar 23 16:19:21 ..... loading genome
+Mar 23 16:19:45 ..... started mapping
+Mar 23 17:43:02 ..... finished mapping
+Mar 23 17:43:06 ..... started sorting BAM
+Mar 23 17:47:55 ..... finished successfully
+SRR16352842
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352842_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352842_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/STAR_output/SRR16352842
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 17:48:16 ..... started STAR run
+Mar 23 17:48:17 ..... loading genome
+Mar 23 17:48:30 ..... started mapping
+SRR16352841
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352841_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352841_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352841
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 19:15:30 ..... started STAR run
+Mar 23 19:15:30 ..... loading genome
+Mar 23 19:15:33 ..... started mapping
+Mar 23 19:23:23 ..... finished mapping
+Mar 23 19:23:23 ..... started sorting BAM
+Mar 23 19:23:56 ..... finished successfully
+SRR16352842
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352842_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352842_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352842
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 19:23:59 ..... started STAR run
+Mar 23 19:24:00 ..... loading genome
+Mar 23 19:24:01 ..... started mapping
+Mar 23 21:21:14 ..... finished mapping
+Mar 23 21:21:14 ..... started sorting BAM
+Mar 23 21:21:50 ..... finished successfully
+SRR16352843
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352843_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352843_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352843
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 21:21:54 ..... started STAR run
+Mar 23 21:21:54 ..... loading genome
+Mar 23 21:21:55 ..... started mapping
+Mar 23 21:30:12 ..... finished mapping
+Mar 23 21:30:13 ..... started sorting BAM
+Mar 23 21:30:52 ..... finished successfully
+SRR16352845
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352845_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352845_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352845
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 21:30:56 ..... started STAR run
+Mar 23 21:30:56 ..... loading genome
+Mar 23 21:30:58 ..... started mapping
+Mar 23 21:33:30 ..... finished mapping
+Mar 23 21:33:31 ..... started sorting BAM
+Mar 23 21:33:47 ..... finished successfully
+SRR16352846
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352846_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352846_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352846
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 21:33:48 ..... started STAR run
+Mar 23 21:33:49 ..... loading genome
+Mar 23 21:33:50 ..... started mapping
+Mar 23 21:57:56 ..... finished mapping
+Mar 23 21:57:56 ..... started sorting BAM
+Mar 23 21:58:38 ..... finished successfully
+SRR16352847
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352847_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352847_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352847
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 21:58:43 ..... started STAR run
+Mar 23 21:58:43 ..... loading genome
+Mar 23 21:58:44 ..... started mapping
+Mar 23 22:08:30 ..... finished mapping
+Mar 23 22:08:31 ..... started sorting BAM
+Mar 23 22:09:06 ..... finished successfully
+SRR16352849
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352849_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352849_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352849
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:09:10 ..... started STAR run
+Mar 23 22:09:10 ..... loading genome
+Mar 23 22:09:12 ..... started mapping
+Mar 23 22:13:01 ..... finished mapping
+Mar 23 22:13:01 ..... started sorting BAM
+Mar 23 22:13:33 ..... finished successfully
+SRR16352850
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352850_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352850_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352850
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:13:36 ..... started STAR run
+Mar 23 22:13:37 ..... loading genome
+Mar 23 22:13:39 ..... started mapping
+Mar 23 22:19:13 ..... finished mapping
+Mar 23 22:19:14 ..... started sorting BAM
+Mar 23 22:20:36 ..... finished successfully
+SRR16352851
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352851_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352851_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352851
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:20:43 ..... started STAR run
+Mar 23 22:20:43 ..... loading genome
+Mar 23 22:20:44 ..... started mapping
+Mar 23 22:23:21 ..... finished mapping
+Mar 23 22:23:22 ..... started sorting BAM
+Mar 23 22:23:37 ..... finished successfully
+SRR16352854
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352854_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352854_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352854
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:23:41 ..... started STAR run
+Mar 23 22:23:41 ..... loading genome
+Mar 23 22:23:43 ..... started mapping
+Mar 23 22:29:29 ..... finished mapping
+Mar 23 22:29:30 ..... started sorting BAM
+Mar 23 22:30:14 ..... finished successfully
+SRR16352855
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352855_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352855_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352855
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:30:18 ..... started STAR run
+Mar 23 22:30:18 ..... loading genome
+Mar 23 22:30:20 ..... started mapping
+Mar 23 22:37:19 ..... finished mapping
+Mar 23 22:37:19 ..... started sorting BAM
+Mar 23 22:38:14 ..... finished successfully
+SRR16352856
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352856_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352856_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352856
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:38:19 ..... started STAR run
+Mar 23 22:38:20 ..... loading genome
+Mar 23 22:38:21 ..... started mapping
+Mar 23 22:42:55 ..... finished mapping
+Mar 23 22:42:56 ..... started sorting BAM
+Mar 23 22:43:33 ..... finished successfully
+SRR16352859
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352859_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352859_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352859
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:43:37 ..... started STAR run
+Mar 23 22:43:37 ..... loading genome
+Mar 23 22:43:39 ..... started mapping
+Mar 23 22:48:54 ..... finished mapping
+Mar 23 22:48:55 ..... started sorting BAM
+Mar 23 22:49:52 ..... finished successfully
+SRR16352860
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352860_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352860_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352860
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:49:57 ..... started STAR run
+Mar 23 22:49:57 ..... loading genome
+Mar 23 22:49:58 ..... started mapping
+Mar 23 22:54:43 ..... finished mapping
+Mar 23 22:54:44 ..... started sorting BAM
+Mar 23 22:55:28 ..... finished successfully
+SRR16352861
+	STAR --runThreadN 12 --genomeDir /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_index --readFilesIn /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352861_1_trimmed.fq.gz /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/TRIM_results/SRR16352861_2_trimmed.fq.gz --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --readFilesCommand zcat --outFileNamePrefix /mnt/atgc-d1/bioinfoII/rnaseq/BioProject_2025/Equipo3/STAR_output/SRR16352861
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Mar 23 22:55:32 ..... started STAR run
+Mar 23 22:55:32 ..... loading genome
+Mar 23 22:55:34 ..... started mapping
+Mar 23 23:00:01 ..... finished mapping
+Mar 23 23:00:01 ..... started sorting BAM
+Mar 23 23:00:40 ..... finished successfully
